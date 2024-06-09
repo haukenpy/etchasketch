@@ -72,11 +72,10 @@ mySlider.onchange = function() {
 
         if (OPACITYMODE) {
             let opacity = Number(div.style.opacity);
-            if (opacity <= 10) {
-                opacity += 0.1;
-            }
+            opacity += 0.1;
             div.style.opacity = `${opacity}`
         }
+        else {div.style.opacity = 1}
 
         if (!COLORMODE) {div.style.backgroundColor = "black";}
         else {
