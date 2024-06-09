@@ -5,13 +5,14 @@ divCounter = 16;
 divContainer = document.querySelector("#div-container");
 sliderText = document.querySelector("#slider-value");
 
-const createDiv = function(flexBasis) {
+const createDiv = function(i, flexBasis) {
+
     let flex = 100/flexBasis;
-    console.log(flex);
+
     newDiv = document.createElement("div");
     newDiv.classList.add("div-grid");
     newDiv.style.flexBasis = `${flex}%`;
-    newDiv.textContent = "";
+
     divContainer.appendChild(newDiv);
 }
 
@@ -31,8 +32,14 @@ mySlider.onchange = function() {
 
     divCounter = sliderValue * sliderValue;
     for (i = 0; i < divCounter; i++) {
-        createDiv(sliderValue)
+        createDiv(i, sliderValue)
     }
+
+    let gridDivs = document.querySelectorAll(".div-grid");
+    gridDivs.forEach(div =>  div.addEventListener("mouseenter", (e) => {
+        e.stopPropagation();
+        e.target.id = "div-black";
+    }));
 };
 
 
