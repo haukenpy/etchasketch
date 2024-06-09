@@ -9,7 +9,7 @@ const createDiv = function(flexBasis) {
     let flex = 100/flexBasis;
 
     newDiv = document.createElement("div");
-    newDiv.classList.add("div-grid");
+    newDiv.classList.add("grid-div");
     newDiv.style.flexBasis = `${flex}%`;
 
     divContainer.appendChild(newDiv);
@@ -66,7 +66,7 @@ mySlider.onchange = function() {
         createDiv(sliderValue)
     }
 
-    let gridDivs = document.querySelectorAll(".div-grid");
+    let gridDivs = document.querySelectorAll(".grid-div");
     gridDivs.forEach(div =>  div.addEventListener("mouseenter", (e) => {
         e.stopPropagation();
 
