@@ -1,5 +1,6 @@
 
-let COLORMODE = "black";
+let COLORMODE = false;
+let OPACITYMODE = false;
 const divContainer = document.querySelector("#div-container");
 const sliderText = document.querySelector("#slider-value");
 
@@ -18,18 +19,30 @@ const createDiv = function(flexBasis) {
 const colorButton = document.querySelector(".color-mode");
 colorButton.addEventListener("click", () => {
 
-    if (COLORMODE === "black") {
-        COLORMODE = "color";
-        colorButton.textContent = "B/W mode";
+    if (COLORMODE) {
+        COLORMODE = false;
+        colorButton.style.backgroundColor = "";
     }
     else {
-        COLORMODE = "black";
-        colorButton.textContent = "Color Mode";
+        COLORMODE = true;
+        colorButton.style.backgroundColor = "green";
+    }
+})
+
+const opacityButton = document.querySelector(".opacity-mode");
+opacityButton.addEventListener("click", () => {
+    if (OPACITYMODE) {
+        OPACITYMODE=false;
+        opacityButton.style.backgroundColor = "";    
+    }
+    else {
+        OPACITYMODE=true;
+        opacityButton.style.backgroundColor = "green";
     }
 })
 
 
-let resetButton = document.querySelector(".grid-resetter");
+const resetButton = document.querySelector(".grid-resetter");
 resetButton.addEventListener("click", () => {
 
     divContainer.textContent = "";
@@ -40,7 +53,7 @@ resetButton.addEventListener("click", () => {
 });
 
 
-let mySlider = document.querySelector(".slider");
+const mySlider = document.querySelector(".slider");
 mySlider.onchange = function() {
 
     divContainer.textContent = "";
@@ -57,11 +70,20 @@ mySlider.onchange = function() {
     gridDivs.forEach(div =>  div.addEventListener("mouseenter", (e) => {
         e.stopPropagation();
 
-        if (COLORMODE === "black") {div.style.backgroundColor = "black";}
+        if (OPACITYMODE) {
+            let opacity = Number(div.style.opacity);
+            if (opacity <= 10) {
+                opacity += 0.1;
+            }
+            div.style.opacity = `${opacity}`
+        }
+
+        if (!COLORMODE) {div.style.backgroundColor = "black";}
         else {
             let randomNum = Math.floor(Math.random() * 888888);
-            console.log(randomNum);
             div.style.backgroundColor = `#${randomNum}`}
+        
+        
     }));
 };
 

@@ -13,7 +13,7 @@ body {
     color: white;
     font-size: 16px;
     border-radius: 5px;
-    width: 100px;
+    width: 150px;
     height: 30px;
 }
 
@@ -43,6 +43,7 @@ body {
 
 .slide-container {
     display: flex;
+    gap: 20px;
 }
 
 .slider {
@@ -54,14 +55,4 @@ body {
     color: white;
     flex: 1;
     min-height: 0;
-}
-
-.div-grid:hover {
-    background-color: black;
-    color: black;
-}
-
-#div-black {
-    background-color: black;
-    color: black;
 }
